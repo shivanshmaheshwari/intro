@@ -17,14 +17,14 @@ class _LoginPageState extends State<LoginPage> {
 
   moveToHome(BuildContext context) async {
     // if (_formKey.currentState.validate()) {
-      setState(() {
-        change_button = true;
-      });
-      await Future.delayed(const Duration(seconds: 1));
-      await Navigator.pushNamed(context, MyRoutes.home_page);
-      setState(() {
-        change_button = false;
-      });
+    setState(() {
+      change_button = true;
+    });
+    await Future.delayed(const Duration(seconds: 1));
+    await Navigator.pushNamed(context, MyRoutes.home_page);
+    setState(() {
+      change_button = false;
+    });
   }
 
   @override
@@ -66,8 +66,21 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         //username compulsory
                         //not working
-                        // validator: (value) {
-                        //   if (value.isEmpty) {
+                        validator: (value) {
+                          if (value != null) {
+                            value.isEmpty ? 'Enter username' : null;
+                          }
+                          return null;
+                        },
+                        // validator: (String? value) {
+                        //   if (value != null && value.isEmpty) {
+                        //     return "Username can't be empty";
+                        //   }
+
+                        //   return null;
+                        // },
+                        //   validator: (String? value) {
+                        //   if (value!.isEmpty) {
                         //     return "Username cann't be empty";
                         //   }
 
