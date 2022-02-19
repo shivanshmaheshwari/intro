@@ -16,14 +16,15 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
   moveToHome(BuildContext context) async {
-    setState(() {
-      change_button = true;
-    });
-    await Future.delayed(const Duration(seconds: 1));
-    await Navigator.pushNamed(context, MyRoutes.home_page);
-    setState(() {
-      change_button = false;
-    });
+    // if (_formKey.currentState.validate()) {
+      setState(() {
+        change_button = true;
+      });
+      await Future.delayed(const Duration(seconds: 1));
+      await Navigator.pushNamed(context, MyRoutes.home_page);
+      setState(() {
+        change_button = false;
+      });
   }
 
   @override
@@ -63,13 +64,16 @@ class _LoginPageState extends State<LoginPage> {
                           hintText: "Enter Username",
                           labelText: "username",
                         ),
-                        validator: ( value) {
-                          if (value.isEmpty) {
-                            return "Username cann't be empty";
-                          }
+                        //username compulsory
+                        //not working
+                        // validator: (value) {
+                        //   if (value.isEmpty) {
+                        //     return "Username cann't be empty";
+                        //   }
 
-                          return null;
-                        },
+                        //   return null;
+                        // },
+
                         //for adding name in after the welcome screen in the home page screen
                         onChanged: (value) {
                           name = value;
@@ -79,6 +83,17 @@ class _LoginPageState extends State<LoginPage> {
                       obscureText: true,
                       decoration: const InputDecoration(
                           hintText: "Enter Password", labelText: "password"),
+                      //for asking password of lenght minimum 6 in the password bar
+                      // not working
+                      // validator: (value) {
+                      //   if (value.isEmpty) {
+                      //     return "Username cann't be empty";
+                      //   } else if (value.length < 6) {
+                      //     return "passwod should be atleast 6 characters";
+                      //   }
+
+                      //   return null;
+                      // },
                     ),
 
                     //space
